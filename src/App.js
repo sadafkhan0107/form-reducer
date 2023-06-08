@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useForm } from './context/formContext/formContext'
 
 function App() {
+  const{name,email,password,number,dispatch} = useForm();
+  const handleNameChange=(e)=> {
+    dispatch({
+      type: "name",
+      payload: e.target.value
+  })
+  }
+  const handleEmailChange=(e)=> {
+    dispatch({
+      type: "email",
+      payload: e.target.value
+    })
+  }
+  const handlePasswordChange=(e)=> {
+    dispatch({
+      type: "password",
+      payload: e.target.value
+    })
+  }
+  const handleNumberChange=(e)=> {
+    dispatch({
+      type: "number",
+      payload: e.target.value
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="form">
+      <input value={name} required placeholder='Enter Name' onChange={handleNameChange} />
+      <input value={email} required placeholder='Enter Email' onChange={handleEmailChange} />
+      <input value={password} required placeholder='Enter Password' onChange={handlePasswordChange} />
+      <input value={number} required placeholder='Enter Number'onChange={handleNumberChange} />
+      <button>Submit</button>
     </div>
   );
 }
